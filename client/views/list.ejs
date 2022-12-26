@@ -1,0 +1,28 @@
+<%- include("header") -%>
+<!-- For anything other than html content(here like if and else statement we have to add striplet(<%%> like this) so that the server can understand it is javascript or logic other that html. So it it best practice to write html in this and only add js when it is really have to) -->
+<div class="box" id="heading">
+  <h1 style="color: purple"><%= listTitle %> </h1>
+
+</div>
+
+<div class="box">
+
+  <% itemsAdded.forEach(function(item){ %>
+  <form class="" action="/delete" method="post">
+
+    <div class="item">
+      <input type="checkbox" name="checkbox" value="<%= item.id%>" onChange="this.form.submit()">
+      <p><%=item.name%></p>
+    </div>
+      <input type="hidden" name="listName" value="<%= listTitle%>"></input>
+  </form>
+  <%}); %>
+
+ <form class="item" action="/" method="post">
+    <input type="text" name="addlist" placeholder="New Item" autocomplete="off">
+    <button type="Submit" name="list" value="<%=listTitle %>">+</button>
+  </form>
+
+</div>
+
+<%- include("footer") -%>
